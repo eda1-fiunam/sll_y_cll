@@ -182,7 +182,7 @@ bool CLL_Find_if( CLL* this, int key )
 	return found;
 }
 
-bool CLL_Find( CLL* this, int key )
+bool CLL_Find( CLL* this, int key, int* data )
 {
 
 }
