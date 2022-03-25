@@ -182,7 +182,7 @@ bool SLL_Find_if( SLL* this, int key )
 	return found;
 }
 
-bool SLL_Find( SLL* this, int key )
+bool SLL_Find( SLL* this, int key, int* data )
 {
 
 }
