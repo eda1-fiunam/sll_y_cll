@@ -22,12 +22,12 @@
 // del patrón y además no tiene prototipo en el archivo de encabezados.
 static Node* newNode( int data )
 {
-	Node* n = (Node*) malloc( sizeof( Node ) );
-	if( n ){
-		n->data = data;
-		n->next = NULL;
-	}
-	return n;
+   Node* n = (Node*) malloc( sizeof( Node ) );
+   if( n ){
+      n->data = data;
+      n->next = NULL;
+   }
+   return n;
 }
 
 /**
@@ -48,11 +48,11 @@ void SLL_Delete( SLL** this )
 {
    assert( *this );
 
-   // primero borra todos los nodos
+   // ¡primero borra todos los nodos!
 
    // luego borra al propio objeto this
 
-   // luego hace que this sea NULL
+   // luego haz que this sea NULL
 }
 
 /**
@@ -62,31 +62,49 @@ void SLL_Delete( SLL** this )
  */
 bool SLL_Is_empty( SLL* this )
 {
+   assert( this );
+
 
 }
 
+/**
+ * @brief Inserta un elemento en el frente de la lista.
+ *
+ * @param this Referencia a un objeto SLL.
+ * @param data El elemento a insertar.
+ * @pre La lista debe existir.
+ */
 void SLL_Push_front( SLL* this, int data )
 {
+   assert( this );
 
 }
 
 void SLL_Push_back( SLL* this, int data )
 {
-	Node* n = newNode( data );
-	if( n )
+   Node* n = newNode( data );
+   if( n )
    {
-		if( SLL_Is_empty( this ) )
+      if( SLL_Is_empty( this ) )
       {
-			this->first = this->last = this->cursor = n;
-		}
-		else{
-			this->last->next = n;
-			this->last = n;
-		}
-		++this->len;
-	}
+         this->first = this->last = this->cursor = n;
+      }
+      else{
+         this->last->next = n;
+         this->last = n;
+      }
+      ++this->len;
+   }
 }
 
+/**
+ * @brief Inserta un elemento a la derecha del cursor.
+ *
+ * @param this Referencia a un objeto SLL.
+ * @param data El elemento a insertar.
+ * @pre La lista debe existir.
+ * @post El cursor se mueve a la derecha, es decir, al nuevo nodo.
+ */
 void SLL_Insert( SLL* this, int data )
 {
 
@@ -97,10 +115,10 @@ void SLL_Pop_front( SLL* this )
    assert( this->first );
    // error fatal si la lista está vacía
 
-	Node* tmp = this->first->next;
-	free( this->first );
-	this->first = tmp;
-	--this->len;
+   Node* tmp = this->first->next;
+   free( this->first );
+   this->first = tmp;
+   --this->len;
 }
 
 /**
@@ -122,12 +140,12 @@ int SLL_Get( SLL* this )
 
 void SLL_Cursor_front( SLL* this )
 {
-	this->cursor = this->first;
+   this->cursor = this->first;
 }
 
 void SLL_Cursor_back( SLL* this )
 {
-	this->cursor = this->last;
+   this->cursor = this->last;
 }
 
 /**
@@ -139,8 +157,9 @@ void SLL_Cursor_back( SLL* this )
  */
 void SLL_Cursor_next( SLL* this )
 {
-	if( this->cursor != NULL ){
-		this->cursor = this->cursor->next;
+   if( this->cursor != NULL )
+   {
+      this->cursor = this->cursor->next;
    }
 }
 
@@ -155,7 +174,7 @@ void SLL_Make_empty( SLL* this )
 }
 
 /**
- * @brief Busca si un elemento está en la lista.
+ * @brief Busca si un elemento está en la lista; en caso afirmativo, coloca al cursor sobre él.
  * @param this Referencia a un objeto SLL.
  * @param key El valor que estamos buscando.
  * @return true si se encontró una coincidencia; false en caso contrario.
@@ -164,25 +183,30 @@ void SLL_Make_empty( SLL* this )
  */
 bool SLL_Find_if( SLL* this, int key )
 {
-	bool found = false;
-	
-	if( !SLL_Is_empty( this ) ){
+   bool found = false;
 
-		for( Node* it = this->first; it->next != NULL && found == false ; it = it->next ){
-
-			if( key == it->data ){
-         // si el dato es compuesto, entonces esta instrucción deberá 
-         // modificarse
-
-				this->cursor = it;
-				found = true;
-			}
-		}
-	}
-	return found;
+   if( !SLL_Is_empty( this ) )
+   {
+      for( Node* it = this->first; it->next != NULL && found == false ; it = it->next )
+      {
+         if( key == it->data ) // si el dato es compuesto, entonces deberás modificar esta instrucción
+         {
+            this->cursor = it;
+            found = true;
+         }
+      }
+   }
+   return found;
 }
 
-bool SLL_Find( SLL* this, int key, int* data )
+/**
+ * @brief Indica si un elemento está en la lista o no.
+ * @param this Referencia a un objeto SLL.
+ * @param key El valor que estamos buscando.
+ * @return true si se encontró una coincidencia; false en caso contrario.
+ * @post El cursor NO se ve afectado por esta operación.
+ */
+bool SLL_Find( SLL* this, int key )
 {
 
 }
