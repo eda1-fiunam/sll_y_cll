@@ -155,7 +155,7 @@ void CLL_Make_empty( CLL* this )
 }
 
 /**
- * @brief Busca si un elemento está en la lista.
+ * @brief Busca un elemento y coloca al cursor en la primer coincidencia.
  * @param this Referencia a un objeto CLL.
  * @param key El valor que estamos buscando.
  * @return true si se encontró una coincidencia; false en caso contrario.
@@ -182,7 +182,16 @@ bool CLL_Find_if( CLL* this, int key )
 	return found;
 }
 
-bool CLL_Find( CLL* this, int key, int* data )
+/**
+ * @brief Busca un elemento.
+ * @param this Referencia a un objeto CLL.
+ * @param key El valor que estamos buscando.
+ * @return true si se encontró una coincidencia; false en caso contrario.
+ *
+ * @post El cursor no se ve afectado por esta operación.
+ * coincidencia
+ */
+bool CLL_Find( CLL* this, int key )
 {
 
 }
@@ -196,3 +205,39 @@ size_t CLL_Len( CLL* this )
 {
 
 }
+
+
+/**
+ * @brief Elimina el elemento apuntado por el cursor.
+ *
+ * @param this Referencia a un objeto CLL.
+ *
+ * @pre  El cursor debe apuntar a un elemento válido. 
+ * @post Si la eliminación tuvo éxito, entonces el cursor se mueve 
+ *       al elemento siguiente al eliminado.
+ */
+void CLL_Erase( CLL* this )
+{
+   assert( this );
+   assert( this->cursor );
+
+
+}
+
+/**
+ * @brief Elimina el primer elemento cuyos datos coincidan con la llave de búsqueda.
+ *
+ * @param this Referencia a un objeto CLL.
+ * @param key  La llave de búsqueda.
+ *
+ * @pre  La lista no debe estar vacía.
+ * @post El cursor no se ve afectado por esta operación.
+ */
+void CLL_Remove( CLL* this, int key )
+{
+   assert( this );
+   assert( this->len > 0 );
+
+
+}
+

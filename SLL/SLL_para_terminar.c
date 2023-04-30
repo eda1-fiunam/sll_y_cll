@@ -36,7 +36,13 @@ static Node* newNode( int data )
  */
 SLL* SLL_New()
 {
-
+   SLL* sll = (SLL*) malloc( sizeof( SLL ) );
+   if( sll != NULL )
+   {
+      sll->first = sll->last = sll->cursor = NULL;
+      sll->len = 0;
+   }
+   return sll;
 }
 
 /**
@@ -48,10 +54,13 @@ void SLL_Delete( SLL** this )
 {
    assert( *this );
 
+   SLL_Make_empty( *this );
    // ¡primero borra todos los nodos!
 
+   free( *this );
    // luego borra al propio objeto this
 
+   *this = NULL;
    // luego haz que this sea NULL
 }
 
@@ -109,6 +118,43 @@ void SLL_Insert( SLL* this, int data )
 {
 
 }
+
+/**
+ * @brief Elimina el elemento apuntado por el cursor.
+ *
+ * @param this Referencia a un objeto SLL.
+ *
+ * @pre  El cursor debe apuntar a un elemento válido. 
+ * @post Si la eliminación tuvo éxito, entonces el cursor se mueve 
+ *       al elemento siguiente al eliminado.
+ */
+void SLL_Erase( SLL* this )
+{
+   assert( this );
+   assert( this->cursor );
+
+
+}
+
+/**
+ * @brief Elimina el primer elemento cuyos datos coincidan con la llave de búsqueda.
+ *
+ * @param this Referencia a un objeto SLL.
+ * @param key  La llave de búsqueda.
+ *
+ * @pre  La lista no debe estar vacía.
+ * @post El cursor no se ve afectado por esta operación.
+ */
+void SLL_Remove( SLL* this, int key )
+{
+   assert( this );
+   assert( this->len > 0 );
+
+
+}
+
+
+
 
 void SLL_Pop_front( SLL* this )
 {
@@ -185,9 +231,9 @@ bool SLL_Find_if( SLL* this, int key )
 {
    bool found = false;
 
-   if( !SLL_Is_empty( this ) )
+   if( ! SLL_Is_empty( this ) )
    {
-      for( Node* it = this->first; it->next != NULL && found == false ; it = it->next )
+      for( Node* it = this->first; it->next != NULL && found == false; it = it->next )
       {
          if( key == it->data ) // si el dato es compuesto, entonces deberás modificar esta instrucción
          {
