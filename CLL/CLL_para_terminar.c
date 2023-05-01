@@ -22,12 +22,7 @@
 // del patrón y además no tiene prototipo en el archivo de encabezados.
 static Node* newNode( int data )
 {
-	Node* n = (Node*) malloc( sizeof( Node ) );
-	if( n ){
-		n->data = data;
-		n->next = NULL;
-	}
-	return n;
+
 }
 
 /**
@@ -67,40 +62,27 @@ bool CLL_Is_empty( CLL* this )
 
 void CLL_Push_front( CLL* this, int data )
 {
+   assert( this );
 
 }
 
 void CLL_Push_back( CLL* this, int data )
 {
-	Node* n = newNode( data );
-	if( n )
-   {
-		if( CLL_Is_empty( this ) )
-      {
-			this->first = this->last = this->cursor = n;
-		}
-		else{
-			this->last->next = n;
-			this->last = n;
-		}
-		++this->len;
-	}
+   assert( this );
 }
 
 void CLL_Insert( CLL* this, int data )
 {
+   assert( this );
 
 }
 
 void CLL_Pop_front( CLL* this )
 {
-   assert( this->first );
-   // error fatal si la lista está vacía
+   assert( this );
+   assert( this->len > 0 );
 
-	Node* tmp = this->first->next;
-	free( this->first );
-	this->first = tmp;
-	--this->len;
+
 }
 
 /**
@@ -112,21 +94,22 @@ void CLL_Pop_front( CLL* this )
  */
 int CLL_Get( CLL* this )
 {
-   assert( this->first );
-   // error fatal si la lista está vacía
-
+   assert( this );
    assert( this->cursor );
-   // error fatal si el cursor no apunta a una posición válida
 
 }
 
 void CLL_Cursor_front( CLL* this )
 {
+   assert( this );
+
 	this->cursor = this->first;
 }
 
 void CLL_Cursor_back( CLL* this )
 {
+   assert( this );
+
 	this->cursor = this->last;
 }
 
@@ -139,10 +122,23 @@ void CLL_Cursor_back( CLL* this )
  */
 void CLL_Cursor_next( CLL* this )
 {
-	if( this->cursor != NULL ){
-		this->cursor = this->cursor->next;
-   }
+   assert( this );
+
+
 }
+
+/**
+ * @brief Mueve al cursor al siguiente elemento a la izquierda.
+ * @param this Referencia a un objeto CLL.
+ * @post El cursor NO se mueve si a la entrada apuntaba a NULL.
+ */
+void CLL_Cursor_prev( CLL* this )
+{
+   assert( this );
+
+
+}
+
 
 /**
  * @brief Vacía la lista sin destruirla.
@@ -151,7 +147,7 @@ void CLL_Cursor_next( CLL* this )
  */
 void CLL_Make_empty( CLL* this )
 {
-
+   assert( this );
 }
 
 /**
@@ -164,22 +160,7 @@ void CLL_Make_empty( CLL* this )
  */
 bool CLL_Find_if( CLL* this, int key )
 {
-	bool found = false;
-	
-	if( !CLL_Is_empty( this ) ){
-
-		for( Node* it = this->first; it->next != NULL && found == false ; it = it->next ){
-
-			if( key == it->data ){
-         // si el dato es compuesto, entonces esta instrucción deberá 
-         // modificarse
-
-				this->cursor = it;
-				found = true;
-			}
-		}
-	}
-	return found;
+   assert( this );
 }
 
 /**
@@ -193,6 +174,9 @@ bool CLL_Find_if( CLL* this, int key )
  */
 bool CLL_Find( CLL* this, int key )
 {
+   assert( this );
+   assert( this->len );
+
 
 }
 
