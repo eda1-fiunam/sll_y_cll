@@ -52,7 +52,6 @@ void   CLL_Make_empty(   CLL* this );
 void   CLL_Cursor_front( CLL* this );
 void   CLL_Cursor_back(  CLL* this );
 void   CLL_Cursor_next(  CLL* this );
-void   CLL_Cursor_prev(  CLL* this );
 bool   CLL_Find_if(      CLL* this, int key );
 bool   CLL_Find(         CLL* this, int key );
 void   CLL_Erase(        CLL* this );

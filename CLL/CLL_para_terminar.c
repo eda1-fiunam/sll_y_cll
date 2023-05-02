@@ -128,19 +128,6 @@ void CLL_Cursor_next( CLL* this )
 }
 
 /**
- * @brief Mueve al cursor al siguiente elemento a la izquierda.
- * @param this Referencia a un objeto CLL.
- * @post El cursor NO se mueve si a la entrada apuntaba a NULL.
- */
-void CLL_Cursor_prev( CLL* this )
-{
-   assert( this );
-
-
-}
-
-
-/**
  * @brief Vacía la lista sin destruirla.
  * @param this Referencia a un objeto CLL.
  * @post La lista queda vacía.
