@@ -119,43 +119,6 @@ void SLL_Insert( SLL* this, int data )
 
 }
 
-/**
- * @brief Elimina el elemento apuntado por el cursor.
- *
- * @param this Referencia a un objeto SLL.
- *
- * @pre  El cursor debe apuntar a un elemento válido. 
- * @post Si la eliminación tuvo éxito, entonces el cursor se mueve 
- *       al elemento siguiente al eliminado.
- */
-void SLL_Erase( SLL* this )
-{
-   assert( this );
-   assert( this->cursor );
-
-
-}
-
-/**
- * @brief Elimina el primer elemento cuyos datos coincidan con la llave de búsqueda.
- *
- * @param this Referencia a un objeto SLL.
- * @param key  La llave de búsqueda.
- *
- * @pre  La lista no debe estar vacía.
- * @post El cursor no se ve afectado por esta operación.
- */
-void SLL_Remove( SLL* this, int key )
-{
-   assert( this );
-   assert( this->len > 0 );
-
-
-}
-
-
-
-
 void SLL_Pop_front( SLL* this )
 {
    assert( this->first );

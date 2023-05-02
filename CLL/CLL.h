@@ -54,7 +54,5 @@ void   CLL_Cursor_back(  CLL* this );
 void   CLL_Cursor_next(  CLL* this );
 bool   CLL_Find_if(      CLL* this, int key );
 bool   CLL_Find(         CLL* this, int key );
-void   CLL_Erase(        CLL* this );
-void   CLL_Remove(       CLL* this, int key );
 
 #endif   /* ----- #ifndef CLL_INC  ----- */

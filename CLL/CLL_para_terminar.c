@@ -177,38 +177,3 @@ size_t CLL_Len( CLL* this )
 
 }
 
-
-/**
- * @brief Elimina el elemento apuntado por el cursor.
- *
- * @param this Referencia a un objeto CLL.
- *
- * @pre  El cursor debe apuntar a un elemento válido. 
- * @post Si la eliminación tuvo éxito, entonces el cursor se mueve 
- *       al elemento siguiente al eliminado.
- */
-void CLL_Erase( CLL* this )
-{
-   assert( this );
-   assert( this->cursor );
-
-
-}
-
-/**
- * @brief Elimina el primer elemento cuyos datos coincidan con la llave de búsqueda.
- *
- * @param this Referencia a un objeto CLL.
- * @param key  La llave de búsqueda.
- *
- * @pre  La lista no debe estar vacía.
- * @post El cursor no se ve afectado por esta operación.
- */
-void CLL_Remove( CLL* this, int key )
-{
-   assert( this );
-   assert( this->len > 0 );
-
-
-}
-

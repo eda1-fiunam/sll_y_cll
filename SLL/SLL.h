@@ -54,7 +54,5 @@ void   SLL_Cursor_back(  SLL* this );
 void   SLL_Cursor_next(  SLL* this );
 bool   SLL_Find_if(      SLL* this, int key );
 bool   SLL_Find(         SLL* this, int key );
-void   SLL_Erase(        SLL* this );
-void   SLL_Remove(       SLL* this, int key );
 
 #endif   /* ----- #ifndef SLL_INC  ----- */
