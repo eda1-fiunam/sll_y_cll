@@ -25,6 +25,9 @@
 #include <stdbool.h>
 #include <assert.h>
 
+typedef int Item;
+// lo usarás más adelante
+
 typedef struct Node
 {
 	int data;
@@ -51,7 +54,7 @@ bool   SLL_Is_empty(     SLL* this );
 void   SLL_Make_empty(   SLL* this );
 void   SLL_Cursor_front( SLL* this );
 void   SLL_Cursor_back(  SLL* this );
-void   SLL_Cursor_next(  SLL* this );
+bool   SLL_Cursor_next(  SLL* this );
 bool   SLL_Find_if(      SLL* this, int key );
 bool   SLL_Find(         SLL* this, int key );
 

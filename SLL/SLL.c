@@ -22,12 +22,7 @@
 // del patrón y además no tiene prototipo en el archivo de encabezados.
 static Node* newNode( int data )
 {
-   Node* n = (Node*) malloc( sizeof( Node ) );
-   if( n ){
-      n->data = data;
-      n->next = NULL;
-   }
-   return n;
+   return NULL;
 }
 
 /**
@@ -36,13 +31,7 @@ static Node* newNode( int data )
  */
 SLL* SLL_New()
 {
-   SLL* sll = (SLL*) malloc( sizeof( SLL ) );
-   if( sll != NULL )
-   {
-      sll->first = sll->last = sll->cursor = NULL;
-      sll->len = 0;
-   }
-   return sll;
+   return NULL;
 }
 
 /**
@@ -73,7 +62,7 @@ bool SLL_Is_empty( SLL* this )
 {
    assert( this );
 
-
+   return false;
 }
 
 /**
@@ -92,13 +81,15 @@ void SLL_Push_front( SLL* this, int data )
 void SLL_Push_back( SLL* this, int data )
 {
    Node* n = newNode( data );
+
    if( n )
    {
       if( SLL_Is_empty( this ) )
       {
          this->first = this->last = this->cursor = n;
       }
-      else{
+      else
+      {
          this->last->next = n;
          this->last = n;
       }
@@ -124,9 +115,9 @@ void SLL_Pop_front( SLL* this )
    assert( this->first );
    // error fatal si la lista está vacía
 
-   Node* tmp = this->first->next;
+   Node* right = this->first->next;
    free( this->first );
-   this->first = tmp;
+   this->first = right;
    --this->len;
 }
 
@@ -147,11 +138,24 @@ int SLL_Get( SLL* this )
 
 }
 
+/**
+ * @brief Coloca al cursor en el primer elemento de la lista
+ *
+ * @param this Referencia a un objeto SLL.
+ */
 void SLL_Cursor_front( SLL* this )
 {
+   assert( this->first );
+   // error fatal si la lista está vacía
+
    this->cursor = this->first;
 }
 
+/**
+ * @brief Coloca al cursor en el último elemento de la lista
+ *
+ * @param this Referencia a un objeto SLL.
+ */
 void SLL_Cursor_back( SLL* this )
 {
    this->cursor = this->last;
@@ -164,12 +168,28 @@ void SLL_Cursor_back( SLL* this )
  *         false en caso contrario.
  * @post El cursor NO se mueve si a la entrada apuntaba a NULL.
  */
-void SLL_Cursor_next( SLL* this )
+bool SLL_Cursor_next( SLL* this )
 {
    if( this->cursor != NULL )
    {
       this->cursor = this->cursor->next;
    }
+
+   return this->cursor;
+}
+
+/**
+ * @brief Avisa si se alcanzó el final de la lista.
+ *
+ * Esta función debe utilizarse en conjunto con @see SLL_Cursor_front(), @see SLL_Cursor_next() y @see SLL_Cursor_back().
+ *
+ * @param this Referencia a un objeto SLL.
+ *
+ * @return true si el cursor está apuntando un elemento después del último; esto es, si el cursor está apuntando a NULL.
+ */
+bool SLL_Cursor_end( SLL* this )
+{
+   return this->cursor == NULL;
 }
 
 /**
