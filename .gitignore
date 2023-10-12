@@ -1,10 +1,6 @@
 /Debug
 /Debug/*
-/.settings
 *.*~
-.metadata/.plugins/
-.metadata/.lock
-.metadata/.log
 *.xml
 *.cpp~
 *.hpp~
@@ -22,4 +18,3 @@
 cscope.*.out
 cscope.out
 tags
-*.launch
